@@ -1,10 +1,10 @@
 <?php
 
 if(resolve("/admin")){
-    render_admin("home");
-}elseif (resolve("/admin/login")){
-    render_admin("login");
+    render("home","admin/master");
+}elseif (resolve("/admin/pages.*")) {
+   require __DIR__ . "/pages/routes.php";
 }else{
     http_response_code(404);
-    echo("Página não encontrada");
+    require __DIR__ . "/../../views/404.tpl.php";
 }
