@@ -20,7 +20,7 @@
         <label for="pagesUrl"><h4>Conteúdo:</h4></label>
         <textarea data-validation="length" data-validation-length="min100" name="content" id="content"></textarea>
     </div>
-    <button type="submit" class="btn btn-primary">Salvar</button>
+    <button type="submit" class="btn btn-primary"><i class="far fa-save"></i> Salvar</button>
 </form>
 <hr>
-<a href="/admin/pages" class="btn btn-secondary">Voltar</a>
+<a href="/admin/pages" class="btn btn-secondary"><i class="far fa-arrow-alt-circle-left"></i> Voltar</a>

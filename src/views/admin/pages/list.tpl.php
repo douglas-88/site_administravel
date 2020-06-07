@@ -19,12 +19,20 @@
         <td><?= $page->user_id;?></td>
         <td><?= $page->created;?></td>
         <td class="text-right">
-            <a href="/admin/pages/<?= $page->id;?>"  class="btn btn-primary btn-sm">VISUALIZAR</a>
-            <a href="/admin/pages/<?= $page->id;?>/edit"  class="btn btn-warning btn-sm">EDITAR</a>
-            <a href="/admin/pages/<?= $page->id;?>/delete"  class="btn btn-danger btn-sm">EXCLUIR</a>
+            <a href="/admin/pages/<?= $page->id;?>"  class="btn btn-primary btn-sm">
+                <i class="far fa-eye"></i>
+            </a>
+            <a href="/admin/pages/<?= $page->id;?>/edit"  class="btn btn-warning btn-sm">
+                <i class="far fa-edit"></i>
+            </a>
+            <a href="/admin/pages/<?= $page->id;?>/delete" onclick="return confirm('Deseja realmente excluir esta página ?')" class="btn btn-danger btn-sm">
+                <i class="far fa-trash-alt"></i>
+            </a>
         </td>
     </tr>
     <?php endforeach;?>
     </tbody>
 </table>
-<a href="/admin/pages/create"  class="btn btn-secondary btn-sm">Criar Página</a>
+<a href="/admin/pages/create"  class="btn btn-secondary btn-sm">
+    <span><i class="far fa-file-alt"></i> Criar Página</span>
+</a>
