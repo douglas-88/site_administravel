@@ -1,21 +1,24 @@
-<h3 class="mb-5">Nova página</h3>
+<h2 class="mb-5">Nova página</h2>
 
-<form action="" method="POST">
+<form action="" method="POST" id="form_page_create">
     <div class="form-group">
-        <label for="pagesTitle">Título</label>
-        <input name="title" id="pagesTitle" type="text" class="form-control" placeholder="Aqui vai o título da página..." required>
+        <label for="pagesTitle"><h4>Título</h4></label>
+        <input data-validation="length" data-validation-length="6-255" name="title" id="pagesTitle" type="text" class="form-control">
+        <small id="titleHelp" class="form-text text-muted">Mínimo de 6 a máximo de 255 caracteres</small>
     </div>
     <div class="form-group">
-        <label for="pagesUrl">URL</label>
+        <label for="pagesUrl"><h4>URL:</h4></label>
         <div class="input-group">
             <div class="input-group-prepend">
                 <span class="input-group-text">/</span>
             </div>
-            <input name="url" id="pagesUrl" type="text" class="form-control" placeholder="URL amigável, deixe em branco para informar a página inicial...">
+            <input name="url" data-validation="custom" data-validation-regexp="^([a-z]+)$" data-validation-optional="true" id="pagesUrl" type="text" class="form-control">
         </div>
+        <small id="urlHelp" class="form-text text-muted">Mínimo de 6 a máximo de 255 caracteres.<br>Informação opcional,se desejar,deixe em branco para o sistema criar a url automaticamente.</small>
     </div>
     <div class="form-group">
-        <textarea name="content" id="content"></textarea>
+        <label for="pagesUrl"><h4>Conteúdo:</h4></label>
+        <textarea data-validation="length" data-validation-length="min100" name="content" id="content"></textarea>
     </div>
     <button type="submit" class="btn btn-primary">Salvar</button>
 </form>

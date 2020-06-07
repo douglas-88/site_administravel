@@ -4,26 +4,29 @@
     <div class="col-3">
         <dl class="row">
             <dt class="col-sm-4">Título</dt>
-            <dd class="col-sm-8">Título</dd>
+            <dd class="col-sm-8"><?= $data["page"]->title?></dd>
 
             <dt class="col-sm-4">URL</dt>
-            <dd class="col-sm-8">/<a href="/" target="blank">abrir</a></dd>
+            <dd class="col-sm-8">/<?= $data["page"]->title?>
+                <br>
+                <a href="/<?= $data["page"]->title?>" target="blank">abrir</a>
+            </dd>
 
             <dt class="col-sm-4">Criado em</dt>
-            <dd class="col-sm-8">2020-06-03</dd>
+            <dd class="col-sm-8"><?= $data["page"]->created?></dd>
 
             <dt class="col-sm-4">Atualizado em</dt>
-            <dd class="col-sm-8">2020-06-03</dd>
+            <dd class="col-sm-8"><?= $data["page"]->updated?></dd>
         </dl>
     </div>
     <div class="col bg-light">
-        conteúdo
+        <?= html_entity_decode($data["page"]->content);?>
     </div>
 </div>
 
 <p>
-    <a href="/admin/pages/1/edit" class="btn btn-primary">editar</a>
-    <a href="/admin/pages/1/delete" class="btn btn-danger confirm">remover</a>
+    <a href="/admin/pages/<?= $data["page"]->id?>/edit" class="btn btn-primary">editar</a>
+    <a href="/admin/pages/<?= $data["page"]->id?>/delete" class="btn btn-danger confirm">remover</a>
 </p>
 
 <a href="/admin/pages" class="btn btn-secondary">Voltar</a>

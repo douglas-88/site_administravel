@@ -1,7 +1,7 @@
 <?php
 
 if(resolve("/admin")){
-    render("home","admin/master");
+    render("admin/home","admin/master");
 }elseif (resolve("/admin/pages.*")) {
    require __DIR__ . "/pages/routes.php";
 }else{
