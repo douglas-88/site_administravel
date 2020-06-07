@@ -16,7 +16,8 @@
     <script src="/resources/noty/lib/noty.js"></script>
     <link href="/resources/noty/lib/noty.css" rel="stylesheet">
     <link href="/resources/noty/lib/themes/bootstrap-v4.css" rel="stylesheet">
-
+    <link href="//cdnjs.cloudflare.com/ajax/libs/jquery-form-validator/2.3.26/theme-default.min.css"
+          rel="stylesheet" type="text/css" />
 </head>
 <body class="sb-nav-fixed">
 <nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
@@ -103,7 +104,8 @@
         </footer>
     </div>
 </div>
-<script src="https://code.jquery.com/jquery-3.4.1.min.js" crossorigin="anonymous"></script>
+<!--<script src="https://code.jquery.com/jquery-3.4.1.min.js" crossorigin="anonymous"></script>-->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js"
         crossorigin="anonymous"></script>
 <script src="/resources/sb_admin/dist/js/scripts.js"></script>
@@ -114,6 +116,7 @@
 <script src="https://cdn.datatables.net/1.10.20/js/dataTables.bootstrap4.min.js" crossorigin="anonymous"></script>
 <script src="/resources/sb_admin/dist/assets/demo/datatables-demo.js"></script>
 <script src="https://cdn.ckeditor.com/ckeditor5/19.0.0/classic/ckeditor.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery-form-validator/2.3.26/jquery.form-validator.min.js"></script>
 <script>
 
     ClassicEditor
@@ -124,7 +127,16 @@
         .catch( error => {
             console.error( error );
         } );
+
+</script>
+<script>
     <?php flash_messages();?>
+</script>
+<script>
+    $.validate({
+        form : '#form_page_create',
+        lang : 'pt'
+    });
 </script>
 </body>
 </html>
