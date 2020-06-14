@@ -16,10 +16,10 @@
             </dd>
 
             <dt class="col-sm-4">Criado em</dt>
-            <dd class="col-sm-8"><?= $data["page"]->created?></dd>
+            <dd class="col-sm-8"><?= date("d/m/Y \á\s h:i:s",strtotime($data["page"]->created));?></dd>
 
             <dt class="col-sm-4">Atualizado em</dt>
-            <dd class="col-sm-8"><?= $data["page"]->updated?></dd>
+            <dd class="col-sm-8"><?= date("d/m/Y \á\s h:i:s",strtotime($data["page"]->updated));?></dd>
         </dl>
         <p>
             <a href="/admin/pages/<?= $data["page"]->id?>/edit" class="btn btn-primary">

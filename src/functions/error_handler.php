@@ -11,7 +11,7 @@
  * @param $errfile
  * @param $errline
  */
-function error_handler($errno,$errstr,$errfile,$errline){
+function error_handler($errno = null,$errstr = null,$errfile = null,$errline = null){
 
     http_response_code(500);
     $erros = [
@@ -32,8 +32,27 @@ function error_handler($errno,$errstr,$errfile,$errline){
         "E_USER_DEPRECATED"   => 16384,
         "E_ALL"               => 32767,
     ];
+
+    if (is_object($errno)) {
+        $err = $errno;
+        $errno = $err->getCode();
+        $errstr = $err->getMessage();
+        $errfile = $err->getFile();
+        $errline = $err->getLine();
+    }
+
+
+    $date = getdate();
+    $dia     = $date["mday"];
+    $mes     = $date["mon"];
+    $ano     = $date["year"];
+    $hora    = $date["hours"];
+    $minuto  = $date["minutes"];
+    $segundo = $date["seconds"];
+
     $message = "<div class=\"alert alert-danger\">\n";
         $message .= "<h4 class=\"alert-heading font-weight-bold\">".array_search($errno,$erros)."</h4>\n";
+        $message .= "<p><strong>Data ocorrência:</strong> {$dia}/{$mes}/{$ano} às {$hora}:{$minuto}:{$segundo}</p>";
         $message .= "<p><strong>Linha:</strong> $errline</p>";
         $message .= "<p><strong>Arquivo:</strong> $errfile</p>\n";
         $message .= "<hr>";

@@ -4,8 +4,9 @@
     <input type="hidden" name="id" value="<?= $data["page"]->id;?>">
     <div class="form-group">
         <label for="pagesTitle">Título</label>
-        <input name="title" data-validation="length" data-validation-length="6-255" id="pagesTitle" type="text" value="<?= $data["page"]->title;?>" class="form-control" placeholder="Aqui vai o título da página..." required>
+        <input name="title" id="pagesTitle" type="text" value="<?= $data["page"]->title;?>" class="form-control" placeholder="Aqui vai o título da página..." >
         <small id="titleHelp" class="form-text text-muted">Mínimo de 6 a máximo de 255 caracteres</small>
+        <small id="title-error" class="form-text text-muted d-none">Mensagem de erro.</small>
     </div>
     <div class="form-group">
         <label for="pagesUrl">URL</label>
@@ -13,7 +14,7 @@
             <div class="input-group-prepend">
                 <span class="input-group-text">/</span>
             </div>
-            <input name="url" id="pagesUrl" type="text" class="form-control" value="<?= $data["page"]->url;?>" placeholder="URL amigável, deixe em branco para informar a página inicial...">
+            <input name="url" id="pagesUrl" type="text" class="form-control"  value="<?= $data["page"]->url;?>" placeholder="URL amigável, deixe em branco para informar a página inicial...">
         </div>
         <small id="urlHelp" class="form-text text-muted">Mínimo de 6 a máximo de 255 caracteres.<br>Informação opcional,se desejar,deixe em branco para o sistema criar a url automaticamente.</small>
     </div>

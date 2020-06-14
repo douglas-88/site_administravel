@@ -1,7 +1,7 @@
 <?php
 
 
-if (resolve("/admin/pages")) { //Exibe Listagem de páginas existentes.(GET)
+if (resolve("/admin/pages[/]?")) { //Exibe Listagem de páginas existentes.(GET)
 
     $pages = get_pages_all($db);
     render("admin/pages/list","admin/master",$pages);

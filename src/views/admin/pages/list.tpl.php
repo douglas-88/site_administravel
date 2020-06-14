@@ -1,4 +1,5 @@
 <h1>Páginas</h1>
+<?php if(!empty($data)):?>
 <table class="table mt-5">
     <thead class="thead-dark">
     <tr>
@@ -17,7 +18,7 @@
         <td><?= content_limit($page->title,40);?></td>
         <td><?= content_limit($page->content,40);?></td>
         <td><?= $page->user_id;?></td>
-        <td><?= $page->created;?></td>
+        <td><?= date("d/m/Y \á\s H:i:s",strtotime($page->created));?></td>
         <td class="text-right">
             <a href="/admin/pages/<?= $page->id;?>"  class="btn btn-primary btn-sm">
                 <i class="far fa-eye"></i>
@@ -33,6 +34,9 @@
     <?php endforeach;?>
     </tbody>
 </table>
+<?php else:?>
+    <p>Nenhuma página encontrada.</p>
+<?php endif;?>
 <a href="/admin/pages/create"  class="btn btn-secondary btn-sm">
-    <span><i class="far fa-file-alt"></i> Criar Página</span>
+    <span><i class="far fa-file-alt"></i> Cadastrar</span>
 </a>
