@@ -9,19 +9,17 @@
     <title>ADMIN</title>
     <link href="/resources/sb_admin/dist/css/styles.css" rel="stylesheet"/>
     <link href="https://cdn.datatables.net/1.10.20/css/dataTables.bootstrap4.min.css" rel="stylesheet"
-          crossorigin="anonymous"/>
+    crossorigin="anonymous"/>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/js/all.min.js"
-            crossorigin="anonymous"></script>
+    crossorigin="anonymous"></script>
     <link rel="stylesheet" href="/css/style.css">
     <script src="/resources/noty/lib/noty.js"></script>
     <link href="/resources/noty/lib/noty.css" rel="stylesheet">
     <link href="/resources/noty/lib/themes/bootstrap-v4.css" rel="stylesheet">
-    <link href="//cdnjs.cloudflare.com/ajax/libs/jquery-form-validator/2.3.26/theme-default.min.css"
-          rel="stylesheet" type="text/css" />
 </head>
 <body class="sb-nav-fixed">
 <nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
-    <a class="navbar-brand" href="index.html">Painel Administrativo</a>
+    <a class="navbar-brand" href="/admin">Painel Administrativo</a>
     <button class="btn btn-link btn-sm order-1 order-lg-0" id="sidebarToggle" href="#"><i class="fas fa-bars"></i>
     </button
     ><!-- Navbar Search-->
@@ -40,10 +38,9 @@
             <a class="nav-link dropdown-toggle" id="userDropdown" href="#" role="button" data-toggle="dropdown"
                aria-haspopup="true" aria-expanded="false"><i class="fas fa-user fa-fw"></i></a>
             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="userDropdown">
-                <a class="dropdown-item" href="#">Configurações</a><a class="dropdown-item" href="#">Log de
-                    atividades</a>
+                <a class="dropdown-item" href="#"><i class="fas fa-user fa-fw"></i> Meu Perfil</a>
                 <div class="dropdown-divider"></div>
-                <a class="dropdown-item" href="login.html">Sair</a>
+                <a class="dropdown-item" href="/admin/logout">Sair</a>
             </div>
         </li>
     </ul>
@@ -54,13 +51,13 @@
             <div class="sb-sidenav-menu">
                 <div class="nav">
                     <div class="sb-sidenav-menu-heading">Menu</div>
-                    <a class="nav-link" href="index.html">
+                    <a class="nav-link" href="/admin">
                         <div class="sb-nav-link-icon">
                             <i class="fas fa-tachometer-alt"></i>
                         </div>
                         Painel Admin
                     </a>
-                    <a class="nav-link" href="index.html">
+                    <a class="nav-link" href="/admin/users">
                         <div class="sb-nav-link-icon">
                             <i class="fas fa-users"></i>
                         </div>
@@ -104,39 +101,20 @@
         </footer>
     </div>
 </div>
-<!--<script src="https://code.jquery.com/jquery-3.4.1.min.js" crossorigin="anonymous"></script>-->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.4.1.min.js" crossorigin="anonymous"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js"
         crossorigin="anonymous"></script>
 <script src="/resources/sb_admin/dist/js/scripts.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js" crossorigin="anonymous"></script>
-<script src="assets/demo/chart-area-demo.js"></script>
-<script src="assets/demo/chart-bar-demo.js"></script>
 <script src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js" crossorigin="anonymous"></script>
 <script src="https://cdn.datatables.net/1.10.20/js/dataTables.bootstrap4.min.js" crossorigin="anonymous"></script>
 <script src="/resources/sb_admin/dist/assets/demo/datatables-demo.js"></script>
 <script src="https://cdn.ckeditor.com/ckeditor5/19.0.0/classic/ckeditor.js"></script>
-<script src="//cdnjs.cloudflare.com/ajax/libs/jquery-form-validator/2.3.26/jquery.form-validator.min.js"></script>
-<script>
-
-    ClassicEditor
-        .create(document.querySelector( '#content' ))
-        .then( editor => {
-            console.log( editor );
-        } )
-        .catch( error => {
-            console.error( error );
-        } );
-
-</script>
+<script src="/resources/jqueryvalidationorg/dist/jquery.validate.min.js"></script>
+<script src="https://cdn.jsdelivr.net/jquery.validation/1.16.0/additional-methods.min.js"></script>
+<script src="/resources/jqueryvalidationorg/dist/localization/messages_pt_BR.min.js"></script>
 <script>
     <?php flash_messages();?>
 </script>
-<script>
-    $.validate({
-        form : '#form_page_create',
-        lang : 'pt'
-    });
-</script>
+<script src="/js/script.js"></script>
 </body>
 </html>

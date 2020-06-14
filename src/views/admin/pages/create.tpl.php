@@ -3,7 +3,7 @@
 <form action="" method="POST" id="form_page_create">
     <div class="form-group">
         <label for="pagesTitle"><h4>Título</h4></label>
-        <input data-validation="length" data-validation-length="6-255" name="title" id="pagesTitle" type="text" class="form-control">
+        <input name="title" id="pagesTitle" type="text" class="form-control">
         <small id="titleHelp" class="form-text text-muted">Mínimo de 6 a máximo de 255 caracteres</small>
     </div>
     <div class="form-group">
@@ -18,9 +18,9 @@
     </div>
     <div class="form-group">
         <label for="pagesUrl"><h4>Conteúdo:</h4></label>
-        <textarea data-validation="length" data-validation-length="min100" name="content" id="content"></textarea>
+        <textarea name="content" id="content"></textarea>
     </div>
-    <button type="submit" class="btn btn-primary">Salvar</button>
+    <button type="submit" class="btn btn-primary"><i class="far fa-save"></i> Salvar</button>
 </form>
 <hr>
-<a href="/admin/pages" class="btn btn-secondary">Voltar</a>
+<a href="/admin/pages" class="btn btn-secondary"><i class="far fa-arrow-alt-circle-left"></i> Voltar</a>

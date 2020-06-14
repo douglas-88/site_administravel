@@ -33,14 +33,19 @@ function create_page(PDO $db,array $data = null):bool{
  *
  * @return bool
  */
-function update_page(PDO $db,int $id):bool{
+function update_page(PDO $db,int $id,array $data = null):bool{
 
+    if(empty($data)){
+        $data = filter_input_array(INPUT_POST,FILTER_SANITIZE_SPECIAL_CHARS);
+    }else{
+        $data = filter_var_array($data, FILTER_SANITIZE_SPECIAL_CHARS);
+    }
 
-    $data = filter_input_array(INPUT_POST,FILTER_SANITIZE_SPECIAL_CHARS);
+     $query = "UPDATE pages SET title =:title,url =:url,content =:content,user_id =1,updated = now() WHERE id =:id";
+     $stmt = $db->prepare($query);
+     $update_status = $stmt->execute($data);
 
-
-    exit;
-
+     return $update_status;
 }
 
 /**
@@ -53,12 +58,11 @@ function update_page(PDO $db,int $id):bool{
  */
 function delete_page(PDO $db,int $id):bool{
 
+    $query = "DELETE FROM pages WHERE id =:id";
+    $stmt = $db->prepare($query);
+    $delete_status = $stmt->execute(["id" => $id]);
 
-    $data = filter_input_array(INPUT_POST,FILTER_SANITIZE_SPECIAL_CHARS);
-
-
-    exit;
-
+    return $delete_status;
 }
 
 /**
