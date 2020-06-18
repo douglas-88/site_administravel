@@ -3,8 +3,16 @@
 
 if (resolve("/admin/pages[/]?")) { //Exibe Listagem de páginas existentes.(GET)
 
-    $pages = get_pages_all($db);
-    render("admin/pages/list","admin/master",$pages);
+    $search = filter_input(INPUT_GET,"s",FILTER_SANITIZE_STRING);
+
+    //Dados para a paginação:
+    $total_de_registros = count(get_pages_all($db,$search));
+    $itens_por_pagina = 3;
+    $maximo_de_links  = 1;
+    $paginator = paginator($total_de_registros,$itens_por_pagina,$maximo_de_links);
+
+    $pages = get_pages_all($db,$search,$itens_por_pagina);
+    render("admin/pages/list","admin/master",["pages" => $pages,"paginator" => $paginator]);
 
 } elseif (resolve("/admin/pages/create")) { //Exibe formulário de criação de página.(GET)
 

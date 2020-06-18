@@ -41,10 +41,34 @@ function create_user(PDO $db, array $data = null): bool{
  *
  * @author Douglas Fernando <dcdouglas64@gmail.com>
  */
-function get_users_all(PDO $db, array $data = null): array{
+function get_users_all(PDO $db,string $s = null,int $qtd_por_pagina = null,array $data = null): array{
 
-    $sql = "SELECT * FROM users";
-    $stmt = $db->query($sql);
+    $where = !empty($s) ? "WHERE name LIKE :name OR email LIKE :email" : "";
+
+    $sql = "SELECT * FROM users {$where} ";
+
+    if(!empty($qtd_por_pagina)){
+        $pagina_atual = filter_input(INPUT_GET,"page",FILTER_SANITIZE_STRIPPED) ?? 1;
+        $start        = ($qtd_por_pagina * $pagina_atual) - $qtd_por_pagina;
+        $sql .= " LIMIT :start,:qtd_por_pagina";
+
+        $stmt = $db->prepare($sql);
+        if(!empty($where)){
+            $stmt->bindValue(":name",'%'.$s.'%',PDO::PARAM_STR);
+            $stmt->bindValue(":email",'%'.$s.'%',PDO::PARAM_STR);
+        }
+        $stmt->bindValue(":start",$start,PDO::PARAM_INT);
+        $stmt->bindValue(":qtd_por_pagina",$qtd_por_pagina,PDO::PARAM_INT);
+        $stmt->execute();
+    }else{
+
+        $stmt = $db->prepare($sql);
+        if(!empty($where)){
+            $stmt->bindValue(":name",'%'.$s.'%',PDO::PARAM_STR);
+            $stmt->bindValue(":email",'%'.$s.'%',PDO::PARAM_STR);
+        }
+        $stmt->execute();
+    }
 
     $users = $stmt->fetchAll();
 
