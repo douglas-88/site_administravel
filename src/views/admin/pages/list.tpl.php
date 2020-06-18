@@ -1,5 +1,6 @@
 <h1>Páginas</h1>
-<?php if(!empty($data)):?>
+<?php if(!empty($data["pages"])):?>
+    <?= $data["paginator"];?>
 <table class="table mt-5">
     <thead class="thead-dark">
     <tr>
@@ -12,7 +13,7 @@
     </tr>
     </thead>
     <tbody>
-    <?php foreach ($data as $page):?>
+    <?php foreach ($data["pages"] as $page):?>
     <tr>
         <td><?= $page->id;?></td>
         <td><?= content_limit($page->title,40);?></td>
@@ -37,6 +38,7 @@
 <?php else:?>
     <p>Nenhuma página encontrada.</p>
 <?php endif;?>
+<?= $data["paginator"];?>
 <a href="/admin/pages/create"  class="btn btn-secondary btn-sm">
     <span><i class="far fa-file-alt"></i> Cadastrar</span>
 </a>

@@ -19,7 +19,7 @@ function create_page(PDO $db,array $data = null):bool{
         $data = filter_var_array($data, FILTER_SANITIZE_SPECIAL_CHARS);
     }
 
-    $query = "INSERT INTO pages(title,url,content,user_id,created,updated) VALUES(:title,:url,:content,1,now(),now())";
+    $query = "INSERT INTO pages(title,url,content,user_id,created,updated) VALUES(:title,:url,:content,17,now(),now())";
     $stmt = $db->prepare($query);
     $insert_status = $stmt->execute($data);
     return $insert_status;
@@ -41,7 +41,7 @@ function update_page(PDO $db,int $id,array $data = null):bool{
         $data = filter_var_array($data, FILTER_SANITIZE_SPECIAL_CHARS);
     }
 
-     $query = "UPDATE pages SET title =:title,url =:url,content =:content,user_id =1,updated = now() WHERE id =:id";
+     $query = "UPDATE pages SET title =:title,url =:url,content =:content,user_id = 17,updated = now() WHERE id =:id";
      $stmt = $db->prepare($query);
      $update_status = $stmt->execute($data);
 
@@ -73,12 +73,29 @@ function delete_page(PDO $db,int $id):bool{
  *
  * @return array Retorna um array com todas as páginas.
  */
-function get_pages_all(PDO $db):array{
+function get_pages_all(PDO $db,string $s = null,int $qtd_por_pagina = null,array $data = null):array{
 
-    $stmt = $db->query("SELECT * FROM pages");
-    $pages = $stmt->fetchAll();
+       $where = !empty($s) ? "WHERE title LIKE :title OR content LIKE :content " : "";
+       $limit = !empty($qtd_por_pagina) ? " LIMIT :inicio,:maximo " : "";
 
-    return $pages;
+       $sql = "SELECT * FROM pages {$where} {$limit}";
+       $stmt = $db->prepare($sql);
+
+    if(!empty($where)){
+       $stmt->bindValue(":title","%".$s."%",PDO::PARAM_STR);
+       $stmt->bindValue(":content","%".$s."%",PDO::PARAM_STR);
+    }
+    if(!empty($limit)){
+       $pagina = filter_input(INPUT_GET,"page",FILTER_SANITIZE_STRIPPED) ?? 1;
+       $inicio = ($qtd_por_pagina * $pagina) - $qtd_por_pagina;
+       $stmt->bindValue(":inicio",$inicio,PDO::PARAM_INT);
+       $stmt->bindValue(":maximo",$qtd_por_pagina,PDO::PARAM_INT);
+    }
+
+       $stmt->execute();
+       $pages = $stmt->fetchAll();
+
+       return $pages;
 }
 
 /**

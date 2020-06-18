@@ -4,8 +4,17 @@ $db = connection();
 
 if(resolve("/admin/users[/]?")){
 
-    $users = get_users_all($db);
-    render("admin/users/list","admin/master",["users" => $users]);
+    $search = filter_input(INPUT_GET,"s",FILTER_SANITIZE_STRING);
+
+    // Dados para Paginação:
+    $itens_por_pagina = 6;
+    $max_links        = 2;
+    $total_registros  = count(get_users_all($db,$search));
+    $paginator        = paginator($total_registros,$itens_por_pagina,$max_links);
+
+    $users = get_users_all($db,$search,$itens_por_pagina);
+
+    render("admin/users/list","admin/master",["users" => $users,"paginator" => $paginator]);
 
 }elseif($id = resolve("/admin/users/(\d+)[/]?")){
 
