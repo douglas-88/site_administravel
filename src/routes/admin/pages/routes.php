@@ -65,5 +65,9 @@ if (resolve("/admin/pages[/]?")) { //Exibe Listagem de páginas existentes.(GET)
 
     flash_messages("Não foi possível remover a página.", "error");
     return header("location:/admin/pages");
+}else{
+    http_response_code(404);
+    require dirname(__FILE__,4) . "/views/404.tpl.php";
 }
+
 

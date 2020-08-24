@@ -1,6 +1,8 @@
+
 var editorTextarea;
+
 ClassicEditor
-    .create(document.querySelector( '#content' ))
+    .create(document.querySelector( '#content'))
     .then( editor => {
         editorTextarea = editor;
     } )
