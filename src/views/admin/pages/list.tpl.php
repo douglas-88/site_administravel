@@ -18,7 +18,7 @@
         <td><?= $page->id;?></td>
         <td><?= content_limit($page->title,40);?></td>
         <td><?= content_limit($page->content,40);?></td>
-        <td><?= $page->user_id;?></td>
+        <td><?= $page->name;?></td>
         <td><?= date("d/m/Y \á\s H:i:s",strtotime($page->created));?></td>
         <td class="text-right">
             <a href="/admin/pages/<?= $page->id;?>"  class="btn btn-primary btn-sm">

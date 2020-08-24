@@ -12,6 +12,10 @@ if(resolve("/admin[/]?")){
 
     require __DIR__ . "/users/routes.php";
 
+}elseif (resolve("/admin/login.*")) {
+
+    require __DIR__ . "/auth/routes.php";
+
 }else{
 
     http_response_code(404);

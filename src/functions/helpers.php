@@ -21,10 +21,10 @@ function content_limit(string $str,int $limit_chars):string{
     $str  = strip_tags(html_entity_decode($str));
     $str  = trim($str);
 
-    if(strlen($str) > $limit_chars):
+    if (strlen($str) > $limit_chars) {
         $str  = substr($str,0,$limit_chars);
         $str .= " ... ";
-    endif;
+    }
 
     return $str;
 }
@@ -43,7 +43,7 @@ function content_limit(string $str,int $limit_chars):string{
  */
 function is_empty_object(stdClass $object):bool{
 
-    foreach($object as $key => $value){
+    foreach ($object as $key => $value) {
        return false;
     }
 
