@@ -100,6 +100,8 @@ function get_user(PDO $db,int $id,array $data = null):stdClass{
     return $user;
 }
 
+
+
 /**
  * /**
  * @author Douglas Fernando <dcdouglas64@gmail.com>

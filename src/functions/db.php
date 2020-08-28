@@ -78,7 +78,7 @@ function get_pages_all(PDO $db,string $s = null,int $qtd_por_pagina = null,array
        $where = !empty($s) ? "WHERE title LIKE :title OR content LIKE :content " : "";
        $limit = !empty($qtd_por_pagina) ? " LIMIT :inicio,:maximo " : "";
 
-       $sql = "SELECT pages.*,users.namepp FROM pages INNER JOIN users ON pages.user_id = users.id {$where} {$limit}";
+       $sql = "SELECT pages.*,users.name FROM pages INNER JOIN users ON pages.user_id = users.id {$where} {$limit}";
        $stmt = $db->prepare($sql);
 
     if(!empty($where)){
