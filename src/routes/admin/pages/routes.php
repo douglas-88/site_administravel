@@ -1,5 +1,6 @@
 <?php
 
+authorization();
 
 if (resolve("/admin/pages[/]?")) { //Exibe Listagem de páginas existentes.(GET)
 

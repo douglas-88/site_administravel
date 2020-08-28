@@ -1,5 +1,7 @@
 <?php
 
+authorization();
+
 $db = connection();
 
 if(resolve("/admin/users[/]?")){
