@@ -5,7 +5,7 @@ Projeto desenvolvido de forma procedural, com o intuito de se praticar a linguag
 - PHP (7.2.* Recomendado)
 - PHPMyAdmin
 - Servidor Apache
-- Servidor MySQL 5.8+
+- Servidor MySQL 5.7+
 - GIT
 
 ### Como realizar o Build

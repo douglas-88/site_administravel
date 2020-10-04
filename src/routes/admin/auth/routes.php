@@ -18,13 +18,20 @@ if (resolve("/admin/login[/]?")) {
     render("admin/auth/login","admin/auth/master");
 
 } elseif (resolve("/admin/login/register")) {
-
-    render("admin/auth/register","admin/auth/master");
+        if($_SERVER["REQUEST_METHOD"] === "POST"){
+            if(create_user($db)){
+                flash_messages("Usuário criado com successo, efetue o seu Login.","success");
+                return header("Location:/admin/login");
+            }
+        }
+    render("admin/auth/register","admin/auth/master",['title' => 'Site Administrável - Cadastro']);
 
 }elseif (resolve("/admin/login/password")) {
 
     render("admin/auth/password","admin/auth/master");
 
+}elseif (resolve("/admin/login/logout")) {
+   lougout();
 }else{
     http_response_code(404);
     require dirname(__FILE__,4) . "/views/404.tpl.php";

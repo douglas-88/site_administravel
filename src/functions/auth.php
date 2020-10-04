@@ -33,6 +33,23 @@ function auth(PDO $db,string $email,string $password):string{
 
     return 'autenticado';
 }
+
+/**
+ * @author Douglas Fernando <dcdouglas64@gmail.com>
+ * @since 1.0
+ *
+ * Função para desfazer a seção do usuário.
+ *
+ * @return void
+ */
+function lougout():void{
+    if (!empty($_SESSION['auth'])) {
+        unset($_SESSION['auth']);
+        flash_messages("Você saiu da àrea administrativa.","warning");
+        header('Location:/admin/login');
+        exit;
+    }
+}
 /**
  * @author Douglas Fernando <dcdouglas64@gmail.com>
  * @since 1.0
