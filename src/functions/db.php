@@ -123,6 +123,3 @@ function get_page(PDO $db,int $id):stdClass{
 
     return $page;
 }
-
-
-

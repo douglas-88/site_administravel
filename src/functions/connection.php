@@ -9,7 +9,8 @@
  * @param array $config
  * @return PDO
  */
-function connection():PDO{
+function connection():PDO
+{
 
     $file = __DIR__ . "/../../config.ini";
 

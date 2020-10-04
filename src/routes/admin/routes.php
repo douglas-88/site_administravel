@@ -1,7 +1,7 @@
 <?php
 
 if(resolve("/admin[/]?")){
-
+    authorization();
     render("admin/home","admin/master");
 
 }elseif (resolve("/admin/pages.*")) {

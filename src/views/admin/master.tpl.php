@@ -39,7 +39,7 @@
             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="userDropdown">
                 <a class="dropdown-item" href="#"><i class="fas fa-user fa-fw"></i> Meu Perfil</a>
                 <div class="dropdown-divider"></div>
-                <a class="dropdown-item" href="/admin/logout">Sair</a>
+                <a class="dropdown-item" href="/admin/login/logout">Sair</a>
             </div>
         </li>
     </ul>
